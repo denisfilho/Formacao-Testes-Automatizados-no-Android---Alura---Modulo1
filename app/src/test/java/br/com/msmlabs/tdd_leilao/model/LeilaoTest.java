@@ -6,7 +6,7 @@ import org.junit.Test;
 
 public class LeilaoTest {
     @Test
-    public void testGetDescricaoQuandoRecebeDescriçãoDevolveDescricao() {
+    public void deve_DevolveDescricao_QuandoRecebeDescrição() {
         // criar cenário de teste
         Leilao console = new Leilao("Console");
 
@@ -16,10 +16,14 @@ public class LeilaoTest {
         // testar resultado esperado
         assertEquals("Console", descricaoDevolvida);
     }
-
+    /*
+    Padrão Usado
     //[nome do metodo][Estado de teste][ResultadoEsperado]
+    ou
+    [deve][Resultado esperado][Estado de teste]
+     */
     @Test
-    public void getMaiorLanceQuandoRecebeApenasUmLanceDevolveMaiorLance(){
+    public void deve_DevolveMaiorLance_QuandoRecebeApenasUmLance(){
         //verifica se devolve maior lance com apenas um lance
         // criar cenário de teste
         Leilao console = new Leilao("Console");
@@ -34,7 +38,7 @@ public class LeilaoTest {
     }
 
     @Test
-    public void getMaiorLanceQuandoRecebeMaisDeUmLanceEmOrdemCrescenteDevolveMaiorLance(){
+    public void deve_DevolveMaiorLance_QuandoRecebeMaisDeUmLanceEmOrdemCrescente(){
 
         // criar cenário de teste
         Leilao computador = new Leilao("Computador");
@@ -47,7 +51,7 @@ public class LeilaoTest {
     }
 
     @Test
-    public void getMaiorLanceQuandoRecebeMaisDeUmLanceEmOrdemDecrescenteDevolveMaiorLance(){
+    public void deve_DevolveMaiorLance_QuandoRecebeMaisDeUmLanceEmOrdemDecrescente(){
 
         Leilao carro = new Leilao("Carro");
         carro.propoe(new Lance(new Usuario("Alex"), 10000.0));
