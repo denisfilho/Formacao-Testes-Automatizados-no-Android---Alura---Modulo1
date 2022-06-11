@@ -8,6 +8,7 @@ import java.util.List;
 
 public class LeilaoTest {
 
+    public static final double DELTA = 0.0001;
     private final Leilao CONSOLE = new Leilao("Console");
     private final Usuario ALEX = new Usuario("Alex");
     @Test
@@ -87,12 +88,16 @@ public class LeilaoTest {
     @Test
     public void deve_DevolverTresMaioresLances_QuandoRecebeExatosTresLances(){
         CONSOLE.propoe(new Lance(ALEX, 200.0));
-        CONSOLE.propoe(new Lance(new Usuario("Fran"), 200.0));
+        CONSOLE.propoe(new Lance(new Usuario("Fran"), 300.0));
         CONSOLE.propoe(new Lance(ALEX, 400.0));
 
         //Test Driven Development (TDD)
         List<Lance> tresMaioresLancesDevolvidos = CONSOLE.tresMaioresLances();
 
         assertEquals(3, tresMaioresLancesDevolvidos.size());
+        assertEquals(400.0, tresMaioresLancesDevolvidos.get(0).getValor(), DELTA);
+        assertEquals(300.0, tresMaioresLancesDevolvidos.get(1).getValor(), DELTA);
+        assertEquals(200.0, tresMaioresLancesDevolvidos.get(2).getValor(), DELTA);
+
     }
 }
