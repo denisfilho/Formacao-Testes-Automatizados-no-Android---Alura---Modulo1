@@ -10,13 +10,18 @@ public class Leilao implements Serializable {
 
     private final String descricao;
     private final List<Lance> lances;
-    private double maiorLance = Double.NEGATIVE_INFINITY;
-    private double menorLance = Double.POSITIVE_INFINITY;
+    private double maiorLance = 0.0;
+    private double menorLance = 0.0;
 
     public void propoe (Lance lance){
         lances.add(lance);
-        Collections.sort(lances);
         double valorLance = lance.getValor();
+        if(lances.size() == 1){
+            maiorLance = valorLance;
+            menorLance = valorLance;
+            return;
+        }
+        Collections.sort(lances);
         calculaMaiorLance(valorLance);
         calculaMenorLance(valorLance);
     }
