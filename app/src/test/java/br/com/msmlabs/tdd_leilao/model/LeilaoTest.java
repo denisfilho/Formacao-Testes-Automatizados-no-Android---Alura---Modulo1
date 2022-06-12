@@ -1,6 +1,7 @@
 package br.com.msmlabs.tdd_leilao.model;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
@@ -154,13 +155,15 @@ public class LeilaoTest {
     }
 
     @Test
-    public void naoDeve_AdicionarLance_QuandoFOrMenorQUeOMaiorLance(){
+    public void naoDeve_AdicionarLance_QuandoForMenorQueOMaiorLance(){
         CONSOLE.propoe(new Lance(ALEX, 500.0));
-        CONSOLE.propoe(new Lance(new Usuario("Fran"), 400.0));
+        try {
+            CONSOLE.propoe(new Lance(new Usuario("Fran"), 400.0));
+            fail("Era esperada uma RuntimeException");
+        } catch (RuntimeException exception){
+            // testes realizado com sucesso
+        }
 
-        int quantidadeLancesDevolvida = CONSOLE.quantidadeLances();
-
-        assertEquals(1, quantidadeLancesDevolvida);
     }
 
     @Test
