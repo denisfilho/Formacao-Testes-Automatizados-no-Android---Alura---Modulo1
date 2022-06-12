@@ -1,6 +1,9 @@
 package br.com.msmlabs.tdd_leilao.model;
 
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
 
 import org.junit.Rule;
@@ -28,7 +31,11 @@ public class LeilaoTest {
         String descricaoDevolvida = CONSOLE.getDescricao();
 
         // testar resultado esperado
-        assertEquals("Console", descricaoDevolvida);
+        //assertEquals("Console", descricaoDevolvida); opção 1
+
+        assertThat(descricaoDevolvida, equalTo("Console")); // opção 2
+        //assertThat(descricaoDevolvida, is("Console"));  opção 3
+        //assertThat(descricaoDevolvida, is(equalTo("Console")));  opção 4
     }
     /*
     Padrão Usado
